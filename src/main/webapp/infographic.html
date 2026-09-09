@@ -1,0 +1,661 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Attendance Management System - Infographic</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1e6fff;--blue-dark:#1458cc;--blue-light:#e8f1ff;
+  --red:#e53935;--red-dark:#b71c1c;--red-light:#ffebee;
+  --green:#00c853;--green-light:#e8faf0;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --orange:#ff6d00;--orange-light:#fff3e0;
+  --teal:#00897b;--teal-light:#e0f2f1;
+  --gray:#64748b;--gray-light:#f1f5f9;--gray-dark:#1e293b;
+  --white:#ffffff;--shadow:0 4px 24px rgba(0,0,0,.10);
+  --radius:16px;--radius-sm:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#f8fafc;color:var(--gray-dark);}
+.page{max-width:1200px;margin:0 auto;padding:24px;}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;}
+.section-title{text-align:center;margin-bottom:32px;}
+.section-title h2{font-size:1.7rem;font-weight:700;color:var(--gray-dark);}
+.section-title p{color:var(--gray);font-size:.95rem;margin-top:6px;}
+.badge-pill{display:inline-block;padding:4px 14px;border-radius:50px;font-size:.78rem;font-weight:600;}
+.card-modern{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:none;overflow:hidden;}
+.divider{height:3px;border-radius:2px;margin:40px 0;}
+.arrow-down{display:flex;justify-content:center;margin:8px 0;}
+.arrow-down i{font-size:1.8rem;color:var(--gray);animation:bounce 1.5s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+</style>
+/* HERO SECTION */
+.hero{background:linear-gradient(135deg,#1e3a8a 0%,#1e6fff 50%,#0ea5e9 100%);color:#fff;padding:56px 40px 48px;border-radius:var(--radius);margin-bottom:8px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.hero h1{font-size:2.4rem;font-weight:900;letter-spacing:-1px;text-shadow:0 2px 8px rgba(0,0,0,.2);position:relative;}
+.hero .subtitle{font-size:1.1rem;opacity:.9;margin-top:10px;position:relative;}
+.hero .device-row{display:flex;justify-content:center;gap:28px;margin-top:28px;position:relative;}
+.device-badge{display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,255,255,.15);border-radius:12px;padding:14px 20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);}
+.device-badge i{font-size:1.7rem;}
+.device-badge span{font-size:.78rem;font-weight:600;}
+.tech-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px;position:relative;}
+.tech-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:50px;padding:5px 16px;font-size:.8rem;font-weight:600;backdrop-filter:blur(4px);}
+/* FLOWCHART */
+.flow-wrap{display:flex;flex-direction:column;align-items:center;gap:0;}
+.flow-node{border-radius:50px;padding:12px 36px;font-weight:700;font-size:1rem;display:inline-block;text-align:center;}
+.flow-start{background:linear-gradient(135deg,#1e293b,#334155);color:#fff;min-width:160px;}
+.flow-decision{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border-radius:8px;transform:rotate(0deg);padding:14px 28px;min-width:220px;position:relative;}
+.flow-decision::before{content:'◆';position:absolute;left:-24px;top:50%;transform:translateY(-50%);color:#a855f7;font-size:1.4rem;}
+.flow-branches{display:flex;gap:32px;width:100%;justify-content:center;margin:8px 0;}
+.flow-branch{flex:1;max-width:320px;}
+.branch-label{text-align:center;font-size:.8rem;font-weight:700;color:var(--gray);margin-bottom:4px;letter-spacing:.5px;}
+/* REGISTRATION CARDS */
+.reg-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.reg-card .card-header{padding:20px 24px;color:#fff;display:flex;align-items:center;gap:12px;}
+.reg-card .card-header h3{font-size:1.15rem;font-weight:700;margin:0;}
+.reg-card .card-header i{font-size:1.5rem;}
+.reg-card .card-body{padding:24px;background:#fff;}
+.form-field{margin-bottom:14px;}
+.form-field label{font-size:.8rem;font-weight:600;color:var(--gray);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
+.form-field .fake-input{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px;font-size:.88rem;color:var(--gray-dark);display:flex;align-items:center;gap:8px;background:#f8fafc;}
+.form-field .fake-input i{color:var(--gray);font-size:.9rem;}
+.form-field .fake-select{border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px;font-size:.88rem;background:#f8fafc;display:flex;justify-content:space-between;align-items:center;}
+.stream-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.stream-tag{padding:4px 12px;border-radius:50px;font-size:.75rem;font-weight:600;border:1.5px solid;cursor:pointer;}
+.stream-tag.blue{border-color:var(--blue);color:var(--blue);background:var(--blue-light);}
+.stream-tag.red{border-color:var(--red);color:var(--red);background:var(--red-light);}
+.btn-reg{width:100%;padding:12px;border-radius:10px;font-weight:700;font-size:1rem;border:none;color:#fff;cursor:pointer;margin-top:8px;letter-spacing:.3px;}
+.btn-reg.blue{background:linear-gradient(135deg,var(--blue),var(--blue-dark));}
+.btn-reg.red{background:linear-gradient(135deg,var(--red),var(--red-dark));}
+/* DB CYLINDER */
+.db-wrap{display:flex;flex-direction:column;align-items:center;margin:8px 0;}
+.db-cylinder{background:linear-gradient(180deg,#1e293b 0%,#334155 100%);color:#fff;border-radius:50%/20px;padding:20px 48px;text-align:center;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.25);}
+.db-cylinder::before{content:'';position:absolute;bottom:-12px;left:0;right:0;height:24px;background:#334155;border-radius:50%;z-index:-1;}
+.db-cylinder i{font-size:2rem;margin-bottom:6px;display:block;color:#38bdf8;}
+.db-cylinder .db-title{font-weight:800;font-size:1rem;letter-spacing:1px;}
+.db-cylinder .db-sub{font-size:.75rem;opacity:.7;margin-top:2px;}
+.db-connects{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px;}
+.db-connect-badge{background:var(--white);border-radius:50px;padding:6px 18px;font-size:.8rem;font-weight:600;color:var(--gray-dark);box-shadow:0 2px 8px rgba(0,0,0,.1);border:1.5px solid #e2e8f0;}
+/* DASHBOARD */
+.dash-header{padding:16px 20px;color:#fff;border-radius:var(--radius-sm) var(--radius-sm) 0 0;display:flex;align-items:center;justify-content:space-between;}
+.dash-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:16px;}
+.dash-stat{border-radius:var(--radius-sm);padding:14px;display:flex;align-items:center;gap:12px;}
+.dash-stat i{font-size:1.6rem;}
+.dash-stat .stat-info .val{font-size:1.4rem;font-weight:800;}
+.dash-stat .stat-info .lbl{font-size:.75rem;font-weight:600;opacity:.8;}
+/* ATTENDANCE TABLE */
+.att-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem;}
+.att-table th{background:#f1f5f9;padding:10px 14px;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;color:var(--gray);}
+.att-table td{padding:10px 14px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.att-table tr:last-child td{border-bottom:none;}
+.att-table tr:hover td{background:#f8fafc;}
+.toggle-btn{display:inline-flex;border-radius:50px;overflow:hidden;border:2px solid #e2e8f0;}
+.toggle-btn span{padding:4px 14px;font-size:.75rem;font-weight:700;cursor:pointer;}
+.toggle-btn .present{background:#00c853;color:#fff;}
+.toggle-btn .absent{background:#fff;color:var(--gray);}
+.success-banner{background:linear-gradient(135deg,#00c853,#00897b);color:#fff;border-radius:var(--radius-sm);padding:12px 20px;display:flex;align-items:center;gap:10px;font-weight:600;margin-top:12px;}
+/* ROLE CARDS */
+.role-card{border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow);background:#fff;border-top:4px solid;}
+.role-card .role-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.5rem;}
+.role-card h4{font-size:1rem;font-weight:700;margin-bottom:6px;}
+.role-card p{font-size:.8rem;color:var(--gray);line-height:1.5;}
+/* TECH STACK */
+.tech-layer{border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:10px;display:flex;align-items:center;gap:16px;}
+.tech-layer .layer-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.tech-layer .layer-info h4{font-size:.95rem;font-weight:700;margin-bottom:4px;}
+.tech-layer .layer-info .tech-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tech-layer .layer-info .tech-tags span{background:#f1f5f9;border-radius:50px;padding:3px 12px;font-size:.75rem;font-weight:600;color:var(--gray-dark);}
+/* DB TABLES */
+.db-table-card{background:#fff;border-radius:var(--radius-sm);box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px;}
+.db-table-card .db-thead{padding:10px 16px;font-weight:700;font-size:.85rem;color:#fff;display:flex;align-items:center;gap:8px;}
+.db-table-card .db-field{padding:8px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #f1f5f9;font-size:.82rem;}
+.db-table-card .db-field:last-child{border-bottom:none;}
+.db-field .field-name{font-weight:600;color:var(--gray-dark);min-width:140px;}
+.db-field .field-type{color:var(--blue);font-size:.75rem;font-weight:600;}
+.pk-badge{background:#fef3c7;color:#92400e;border-radius:4px;padding:1px 6px;font-size:.68rem;font-weight:700;}
+.fk-badge{background:#ede9fe;color:#6d28d9;border-radius:4px;padding:1px 6px;font-size:.68rem;font-weight:700;}
+/* RESPONSIVE FEATURES */
+.resp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.resp-item{background:#fff;border-radius:var(--radius-sm);padding:18px 16px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.resp-item i{font-size:1.8rem;margin-bottom:10px;display:block;}
+.resp-item h5{font-size:.88rem;font-weight:700;margin-bottom:4px;}
+.resp-item p{font-size:.75rem;color:var(--gray);line-height:1.4;}
+/* RESPONSIVE */
+@media(max-width:768px){.hero h1{font-size:1.5rem;}.hero .device-row{gap:12px;}.flow-branches{flex-direction:column;align-items:center;}.dash-stat-grid{grid-template-columns:1fr;}}
+@media(max-width:480px){.page{padding:12px;}.hero{padding:32px 16px;}}
+/* SECTION BG */
+.section-blue{background:var(--blue-light);}
+.section-red{background:var(--red-light);}
+.section-dark{background:var(--gray-dark);}
+.section-green{background:var(--green-light);}
+.bg-section{border-radius:var(--radius);padding:32px;margin-bottom:32px;}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- ===== 1. HERO SECTION ===== -->
+<div class="hero mb-4">
+  <div class="badge-pill mb-3" style="background:rgba(255,255,255,.2);color:#fff;font-size:.8rem;">&#127979; Final Year Major Project &bull; 2024&ndash;25</div>
+  <h1><i class="fa-solid fa-building-columns me-2"></i>COLLEGE ATTENDANCE<br>MANAGEMENT SYSTEM</h1>
+  <p class="subtitle">Responsive Student &amp; Teacher Attendance Portal &bull; Multi-Stream Support</p>
+  <div class="device-row">
+    <div class="device-badge"><i class="fa-solid fa-desktop"></i><span>Desktop</span></div>
+    <div class="device-badge"><i class="fa-solid fa-laptop"></i><span>Laptop</span></div>
+    <div class="device-badge"><i class="fa-solid fa-tablet-screen-button"></i><span>Tablet</span></div>
+    <div class="device-badge"><i class="fa-solid fa-mobile-screen"></i><span>Mobile</span></div>
+  </div>
+  <div class="tech-strip mt-3">
+    <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span>
+    <span class="tech-badge">Bootstrap</span><span class="tech-badge">JavaScript</span>
+    <span class="tech-badge">JSP</span><span class="tech-badge">Java Servlet</span>
+    <span class="tech-badge">JDBC</span><span class="tech-badge">MySQL</span>
+    <span class="tech-badge">Apache Tomcat</span>
+  </div>
+</div>
+
+<!-- ===== 2. FLOWCHART START ===== -->
+<div class="bg-section" style="background:#f8fafc;border:2px dashed #e2e8f0;margin-bottom:32px;">
+  <div class="section-title"><h2><i class="fa-solid fa-diagram-project me-2" style="color:var(--blue)"></i>System Flow Chart</h2><p>End-to-end workflow from registration to attendance marking</p></div>
+  <div class="flow-wrap">
+    <div class="flow-node flow-start"><i class="fa-solid fa-play me-2"></i>START</div>
+    <div class="arrow-down my-2"><i class="fa-solid fa-arrow-down" style="color:var(--blue)"></i></div>
+    <div class="flow-node flow-decision"><i class="fa-solid fa-code-branch me-2"></i>Choose Registration Type</div>
+    <div class="arrow-down my-2"><i class="fa-solid fa-arrow-down" style="color:var(--purple)"></i></div>
+    <div class="flow-branches">
+      <div class="flow-branch">
+        <div class="branch-label">&#10094; STUDENT</div>
+        <div style="background:var(--blue-light);border:2px solid var(--blue);border-radius:12px;padding:12px 16px;text-align:center;">
+          <i class="fa-solid fa-user-graduate" style="color:var(--blue);font-size:1.4rem;"></i>
+          <div style="font-weight:700;color:var(--blue);margin-top:6px;">Student Registration</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--gray);font-weight:700;font-size:.9rem;">OR</div>
+      <div class="flow-branch">
+        <div class="branch-label">TEACHER &#10095;</div>
+        <div style="background:var(--red-light);border:2px solid var(--red);border-radius:12px;padding:12px 16px;text-align:center;">
+          <i class="fa-solid fa-chalkboard-user" style="color:var(--red);font-size:1.4rem;"></i>
+          <div style="font-weight:700;color:var(--red);margin-top:6px;">Teacher Registration</div>
+        </div>
+      </div>
+    </div>
+    <div class="arrow-down my-2"><i class="fa-solid fa-arrow-down" style="color:var(--gray)"></i></div>
+    <div class="flow-node" style="background:linear-gradient(135deg,#00897b,#00c853);color:#fff;"><i class="fa-solid fa-database me-2"></i>Save to MySQL Database</div>
+    <div class="arrow-down my-2"><i class="fa-solid fa-arrow-down" style="color:var(--green)"></i></div>
+    <div class="flow-node" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;min-width:220px;"><i class="fa-solid fa-right-to-bracket me-2"></i>Login (ID + Password)</div>
+    <div class="arrow-down my-2"><i class="fa-solid fa-arrow-down" style="color:var(--purple)"></i></div>
+    <div class="flow-node" style="background:linear-gradient(135deg,#ea580c,#f97316);color:#fff;min-width:220px;"><i class="fa-solid fa-circle-question me-2"></i>Check User Type?</div>
+    <div class="arrow-down my-2"><i class="fa-solid fa-arrow-down" style="color:var(--orange)"></i></div>
+    <div class="flow-branches">
+      <div class="flow-branch">
+        <div class="branch-label">STUDENT DASHBOARD</div>
+        <div style="background:var(--blue-light);border:2px solid var(--blue);border-radius:12px;padding:10px 14px;text-align:center;font-size:.85rem;font-weight:600;color:var(--blue);">
+          <i class="fa-solid fa-chart-pie me-1"></i>View Attendance &bull; Profile &bull; Stats
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--gray);font-weight:700;">OR</div>
+      <div class="flow-branch">
+        <div class="branch-label">TEACHER DASHBOARD</div>
+        <div style="background:var(--red-light);border:2px solid var(--red);border-radius:12px;padding:10px 14px;text-align:center;font-size:.85rem;font-weight:600;color:var(--red);">
+          <i class="fa-solid fa-clipboard-check me-1"></i>Mark Attendance &bull; Manage
+        </div>
+      </div>
+    </div>
+    <div class="arrow-down my-2"><i class="fa-solid fa-arrow-down" style="color:var(--gray)"></i></div>
+    <div class="flow-node" style="background:linear-gradient(135deg,#1e293b,#334155);color:#fff;"><i class="fa-solid fa-stop me-2"></i>END</div>
+  </div>
+</div>
+<!-- ===== 3 & 4. REGISTRATION MODULES ===== -->
+<div class="section-title mt-4"><h2><i class="fa-solid fa-user-plus me-2" style="color:var(--blue)"></i>Registration Modules</h2><p>Student &amp; Teacher registration with stream/course selection</p></div>
+<div class="row g-4 mb-4">
+  <!-- STUDENT REG -->
+  <div class="col-lg-6">
+    <div class="reg-card card-modern h-100">
+      <div class="card-header" style="background:linear-gradient(135deg,var(--blue),var(--blue-dark));">
+        <i class="fa-solid fa-user-graduate"></i>
+        <div><h3>Student Registration</h3><small style="opacity:.85;">Create your student account</small></div>
+        <span class="badge-pill ms-auto" style="background:rgba(255,255,255,.2);color:#fff;">Blue Theme</span>
+      </div>
+      <div class="card-body">
+        <div class="form-field"><label><i class="fa-solid fa-user me-1"></i>Full Name</label><div class="fake-input"><i class="fa-regular fa-user"></i>Enter your full name</div></div>
+        <div class="form-field"><label><i class="fa-solid fa-id-card me-1"></i>Enrollment ID</label><div class="fake-input"><i class="fa-solid fa-hashtag"></i>e.g. EN2024001</div></div>
+        <div class="form-field"><label><i class="fa-solid fa-lock me-1"></i>Password</label><div class="fake-input"><i class="fa-solid fa-key"></i>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div></div>
+        <div class="form-field">
+          <label><i class="fa-solid fa-book me-1"></i>Select Stream / Course</label>
+          <div class="fake-select" style="border-color:var(--blue);">
+            <span style="color:var(--gray);">Choose your stream&hellip;</span>
+            <i class="fa-solid fa-chevron-down" style="color:var(--blue);"></i>
+          </div>
+          <div class="stream-tags mt-2">
+            <span class="stream-tag blue">B.Tech</span><span class="stream-tag blue">M.Tech</span>
+            <span class="stream-tag blue">Diploma</span><span class="stream-tag blue">Pharmacy</span>
+            <span class="stream-tag blue">MBA</span><span class="stream-tag blue">BCA</span>
+            <span class="stream-tag blue">MCA</span><span class="stream-tag blue">Nursing</span>
+            <span class="stream-tag blue">BBA</span><span class="stream-tag blue">Other</span>
+          </div>
+        </div>
+        <div class="form-field"><label><i class="fa-solid fa-layer-group me-1"></i>Select Semester</label>
+          <div class="fake-select" style="border-color:var(--blue);">
+            <span style="color:var(--gray);">Select Semester (1&ndash;8)&hellip;</span>
+            <i class="fa-solid fa-chevron-down" style="color:var(--blue);"></i>
+          </div>
+        </div>
+        <button class="btn-reg blue"><i class="fa-solid fa-user-plus me-2"></i>Register as Student</button>
+      </div>
+    </div>
+  </div>
+  <!-- TEACHER REG -->
+  <div class="col-lg-6">
+    <div class="reg-card card-modern h-100">
+      <div class="card-header" style="background:linear-gradient(135deg,var(--red),var(--red-dark));">
+        <i class="fa-solid fa-chalkboard-user"></i>
+        <div><h3>Teacher Registration</h3><small style="opacity:.85;">Create your teacher account</small></div>
+        <span class="badge-pill ms-auto" style="background:rgba(255,255,255,.2);color:#fff;">Red Theme</span>
+      </div>
+      <div class="card-body">
+        <div class="form-field"><label><i class="fa-solid fa-user me-1"></i>Full Name</label><div class="fake-input"><i class="fa-regular fa-user"></i>Enter your full name</div></div>
+        <div class="form-field"><label><i class="fa-solid fa-id-badge me-1"></i>Employee ID</label><div class="fake-input"><i class="fa-solid fa-hashtag"></i>e.g. EMP2024010</div></div>
+        <div class="form-field"><label><i class="fa-solid fa-lock me-1"></i>Password</label><div class="fake-input"><i class="fa-solid fa-key"></i>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div></div>
+        <div class="form-field">
+          <label><i class="fa-solid fa-user-tie me-1"></i>Select Role</label>
+          <div class="stream-tags">
+            <span class="stream-tag red">Professor</span><span class="stream-tag red">HOD</span>
+            <span class="stream-tag red">Vice Principal</span><span class="stream-tag red">Principal</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label><i class="fa-solid fa-sitemap me-1"></i>Department / Stream</label>
+          <div class="stream-tags">
+            <span class="stream-tag red">Engineering</span><span class="stream-tag red">Pharmacy</span>
+            <span class="stream-tag red">Management</span><span class="stream-tag red">Nursing</span>
+            <span class="stream-tag red">Computer Apps</span><span class="stream-tag red">Polytechnic</span>
+          </div>
+        </div>
+        <div class="form-field"><label><i class="fa-solid fa-calendar-days me-1"></i>Assigned Semesters (Multi-select)</label>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+            <span style="background:var(--red);color:#fff;border-radius:50px;padding:3px 12px;font-size:.75rem;font-weight:700;">Sem 1</span>
+            <span style="background:var(--red);color:#fff;border-radius:50px;padding:3px 12px;font-size:.75rem;font-weight:700;">Sem 3</span>
+            <span style="background:#f1f5f9;color:var(--gray);border-radius:50px;padding:3px 12px;font-size:.75rem;font-weight:700;">Sem 2</span>
+            <span style="background:#f1f5f9;color:var(--gray);border-radius:50px;padding:3px 12px;font-size:.75rem;font-weight:700;">Sem 4</span>
+            <span style="background:#f1f5f9;color:var(--gray);border-radius:50px;padding:3px 12px;font-size:.75rem;font-weight:700;">Sem 5</span>
+          </div>
+        </div>
+        <button class="btn-reg red"><i class="fa-solid fa-chalkboard-user me-2"></i>Register as Teacher</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== 5. DATABASE + 6. LOGIN ===== -->
+<div class="row g-4 mb-4">
+  <!-- DATABASE CYLINDER -->
+  <div class="col-lg-4">
+    <div class="card-modern p-4 h-100 d-flex flex-column align-items:center justify-content-center text-center">
+      <div class="section-title mb-3"><h2 style="font-size:1.3rem;"><i class="fa-solid fa-database me-2" style="color:var(--blue)"></i>Database Layer</h2></div>
+      <div class="db-wrap">
+        <div class="db-cylinder">
+          <i class="fa-solid fa-database"></i>
+          <div class="db-title">MySQL DATABASE</div>
+          <div class="db-sub">Relational &bull; JDBC Connected</div>
+        </div>
+      </div>
+      <div class="db-connects mt-3">
+        <span class="db-connect-badge"><i class="fa-solid fa-user-graduate me-1" style="color:var(--blue)"></i>Students</span>
+        <span class="db-connect-badge"><i class="fa-solid fa-chalkboard-user me-1" style="color:var(--red)"></i>Teachers</span>
+        <span class="db-connect-badge"><i class="fa-solid fa-right-to-bracket me-1" style="color:var(--purple)"></i>Login</span>
+        <span class="db-connect-badge"><i class="fa-solid fa-clipboard-check me-1" style="color:var(--green)"></i>Attendance</span>
+        <span class="db-connect-badge"><i class="fa-solid fa-book me-1" style="color:var(--orange)"></i>Subjects</span>
+        <span class="db-connect-badge"><i class="fa-solid fa-layer-group me-1" style="color:var(--teal)"></i>Semesters</span>
+      </div>
+      <div style="margin-top:20px;background:var(--gray-light);border-radius:10px;padding:12px;">
+        <div style="font-size:.78rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Java JDBC Connection</div>
+        <code style="font-size:.75rem;color:var(--blue-dark);">DriverManager.getConnection(<br>&nbsp;"jdbc:mysql://localhost/cams"<br>)</code>
+      </div>
+    </div>
+  </div>
+  <!-- LOGIN MODULE -->
+  <div class="col-lg-8">
+    <div class="card-modern h-100">
+      <div class="card-header" style="background:linear-gradient(135deg,#7c3aed,#a855f7);padding:20px 24px;color:#fff;display:flex;align-items:center;gap:12px;">
+        <i class="fa-solid fa-right-to-bracket" style="font-size:1.5rem;"></i>
+        <div><h3 style="font-size:1.15rem;font-weight:700;margin:0;">Login Portal</h3><small style="opacity:.85;">Secure authentication for students &amp; teachers</small></div>
+      </div>
+      <div class="card-body p-4">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="form-field"><label><i class="fa-solid fa-id-card me-1"></i>Enrollment ID / Employee ID</label><div class="fake-input"><i class="fa-solid fa-user"></i>Enter your ID</div></div>
+            <div class="form-field"><label><i class="fa-solid fa-lock me-1"></i>Password</label><div class="fake-input"><i class="fa-solid fa-key"></i>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div></div>
+            <button class="btn-reg" style="background:linear-gradient(135deg,#7c3aed,#a855f7);"><i class="fa-solid fa-right-to-bracket me-2"></i>Login to System</button>
+          </div>
+          <div class="col-md-6">
+            <div style="background:var(--purple-light);border-radius:12px;padding:16px;height:100%;">
+              <div style="font-weight:700;color:var(--purple);margin-bottom:12px;font-size:.9rem;"><i class="fa-solid fa-circle-question me-2"></i>User Type Detection</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="background:#fff;border-radius:8px;padding:10px 14px;border-left:4px solid var(--blue);display:flex;align-items:center;gap:10px;">
+                  <i class="fa-solid fa-user-graduate" style="color:var(--blue);font-size:1.1rem;"></i>
+                  <div><div style="font-weight:700;font-size:.85rem;color:var(--blue);">Student Login</div><div style="font-size:.75rem;color:var(--gray);">Redirects to Student Dashboard</div></div>
+                </div>
+                <div style="background:#fff;border-radius:8px;padding:10px 14px;border-left:4px solid var(--red);display:flex;align-items:center;gap:10px;">
+                  <i class="fa-solid fa-chalkboard-user" style="color:var(--red);font-size:1.1rem;"></i>
+                  <div><div style="font-weight:700;font-size:.85rem;color:var(--red);">Teacher Login</div><div style="font-size:.75rem;color:var(--gray);">Redirects to Teacher Dashboard</div></div>
+                </div>
+                <div style="background:#fff;border-radius:8px;padding:10px 14px;border-left:4px solid var(--orange);display:flex;align-items:center;gap:10px;">
+                  <i class="fa-solid fa-shield-halved" style="color:var(--orange);font-size:1.1rem;"></i>
+                  <div><div style="font-weight:700;font-size:.85rem;color:var(--orange);">Session Management</div><div style="font-size:.75rem;color:var(--gray);">Java Servlet + HttpSession</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== 7 & 8. DASHBOARDS ===== -->
+<div class="section-title mt-2"><h2><i class="fa-solid fa-gauge-high me-2" style="color:var(--blue)"></i>Role-Based Dashboards</h2><p>Responsive ERP-style dashboards for students and teachers</p></div>
+<div class="row g-4 mb-4">
+  <!-- STUDENT DASHBOARD -->
+  <div class="col-lg-6">
+    <div class="card-modern h-100">
+      <div class="dash-header" style="background:linear-gradient(135deg,var(--blue),var(--blue-dark));">
+        <div><i class="fa-solid fa-user-graduate me-2"></i><strong>Student Dashboard</strong></div>
+        <small style="opacity:.8;">Enrollment: EN2024001</small>
+        <button style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:8px;padding:4px 10px;font-size:.75rem;cursor:pointer;margin-left:auto;"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <!-- Stat Cards -->
+      <div class="dash-stat-grid">
+        <div class="dash-stat" style="background:var(--blue-light);">
+          <i class="fa-solid fa-calendar-check" style="color:var(--blue);"></i>
+          <div class="stat-info"><div class="val" style="color:var(--blue);">87%</div><div class="lbl" style="color:var(--blue);">Overall Attendance</div></div>
+        </div>
+        <div class="dash-stat" style="background:var(--green-light);">
+          <i class="fa-solid fa-check-circle" style="color:var(--green);"></i>
+          <div class="stat-info"><div class="val" style="color:var(--green);">52</div><div class="lbl" style="color:var(--green);">Classes Present</div></div>
+        </div>
+        <div class="dash-stat" style="background:var(--red-light);">
+          <i class="fa-solid fa-circle-xmark" style="color:var(--red);"></i>
+          <div class="stat-info"><div class="val" style="color:var(--red);">8</div><div class="lbl" style="color:var(--red);">Classes Absent</div></div>
+        </div>
+        <div class="dash-stat" style="background:var(--purple-light);">
+          <i class="fa-solid fa-book-open" style="color:var(--purple);"></i>
+          <div class="stat-info"><div class="val" style="color:var(--purple);">6</div><div class="lbl" style="color:var(--purple);">Subjects Total</div></div>
+        </div>
+      </div>
+      <!-- Subject wise -->
+      <div style="padding:0 16px 16px;">
+        <div style="font-size:.82rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">Subject-wise Attendance</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:.8rem;min-width:100px;font-weight:600;">Data Structures</span><div style="flex:1;background:#e2e8f0;border-radius:50px;height:8px;"><div style="width:92%;background:var(--green);border-radius:50px;height:8px;"></div></div><span style="font-size:.78rem;font-weight:700;color:var(--green);">92%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:.8rem;min-width:100px;font-weight:600;">DBMS</span><div style="flex:1;background:#e2e8f0;border-radius:50px;height:8px;"><div style="width:85%;background:var(--blue);border-radius:50px;height:8px;"></div></div><span style="font-size:.78rem;font-weight:700;color:var(--blue);">85%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:.8rem;min-width:100px;font-weight:600;">Java Programming</span><div style="flex:1;background:#e2e8f0;border-radius:50px;height:8px;"><div style="width:78%;background:var(--orange);border-radius:50px;height:8px;"></div></div><span style="font-size:.78rem;font-weight:700;color:var(--orange);">78%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:.8rem;min-width:100px;font-weight:600;">Networks</span><div style="flex:1;background:#e2e8f0;border-radius:50px;height:8px;"><div style="width:65%;background:var(--red);border-radius:50px;height:8px;"></div></div><span style="font-size:.78rem;font-weight:700;color:var(--red);">65%</span></div>
+        </div>
+        <div style="margin-top:12px;background:var(--blue-light);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:.8rem;">
+          <i class="fa-solid fa-circle-info" style="color:var(--blue);"></i>
+          <span style="color:var(--blue-dark);font-weight:600;">Stream: B.Tech CSE &bull; Semester: 5th &bull; Batch: 2022&ndash;26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- TEACHER DASHBOARD -->
+  <div class="col-lg-6">
+    <div class="card-modern h-100">
+      <div class="dash-header" style="background:linear-gradient(135deg,var(--red),var(--red-dark));">
+        <div><i class="fa-solid fa-chalkboard-user me-2"></i><strong>Teacher Dashboard</strong></div>
+        <small style="opacity:.8;">Prof. Rajesh Kumar</small>
+        <button style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:8px;padding:4px 10px;font-size:.75rem;cursor:pointer;margin-left:auto;"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <div style="padding:16px;">
+        <div class="row g-2 mb-3">
+          <div class="col-4"><div style="background:var(--red-light);border-radius:8px;padding:10px;text-align:center;"><i class="fa-solid fa-sitemap" style="color:var(--red);"></i><div style="font-size:.7rem;font-weight:700;margin-top:4px;color:var(--red);">Stream</div><select style="border:none;background:transparent;font-size:.75rem;font-weight:600;width:100%;text-align:center;"><option>B.Tech</option></select></div></div>
+          <div class="col-4"><div style="background:var(--orange-light);border-radius:8px;padding:10px;text-align:center;"><i class="fa-solid fa-layer-group" style="color:var(--orange);"></i><div style="font-size:.7rem;font-weight:700;margin-top:4px;color:var(--orange);">Semester</div><select style="border:none;background:transparent;font-size:.75rem;font-weight:600;width:100%;text-align:center;"><option>Sem 5</option></select></div></div>
+          <div class="col-4"><div style="background:var(--purple-light);border-radius:8px;padding:10px;text-align:center;"><i class="fa-solid fa-book" style="color:var(--purple);"></i><div style="font-size:.7rem;font-weight:700;margin-top:4px;color:var(--purple);">Subject</div><select style="border:none;background:transparent;font-size:.75rem;font-weight:600;width:100%;text-align:center;"><option>DBMS</option></select></div></div>
+        </div>
+        <!-- Attendance Table -->
+        <table class="att-table">
+          <thead><tr><th>Roll No</th><th>Student Name</th><th>Stream</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">001</td><td>Rahul Sharma</td><td><span style="background:var(--blue-light);color:var(--blue);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:700;">B.Tech</span></td><td><div class="toggle-btn"><span class="present">Present</span><span class="absent">Absent</span></div></td></tr>
+            <tr><td style="font-weight:700;">002</td><td>Priya Singh</td><td><span style="background:var(--blue-light);color:var(--blue);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:700;">B.Tech</span></td><td><div class="toggle-btn"><span class="present">Present</span><span class="absent">Absent</span></div></td></tr>
+            <tr><td style="font-weight:700;">003</td><td>Amit Verma</td><td><span style="background:var(--blue-light);color:var(--blue);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:700;">B.Tech</span></td><td><div class="toggle-btn" style="border-color:#e2e8f0;"><span class="present" style="background:#e2e8f0;color:var(--gray);">Present</span><span class="absent" style="background:var(--red);color:#fff;">Absent</span></div></td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button style="flex:1;padding:8px;background:linear-gradient(135deg,var(--green),var(--teal));color:#fff;border:none;border-radius:8px;font-weight:700;font-size:.82rem;cursor:pointer;"><i class="fa-solid fa-floppy-disk me-1"></i>Save Attendance</button>
+          <button style="flex:1;padding:8px;background:var(--gray-light);color:var(--gray-dark);border:none;border-radius:8px;font-weight:700;font-size:.82rem;cursor:pointer;"><i class="fa-solid fa-pen me-1"></i>Update</button>
+        </div>
+        <div class="success-banner mt-2"><i class="fa-solid fa-circle-check"></i>Attendance Saved Successfully!</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== 10. TEACHER ROLES PANEL ===== -->
+<div class="bg-section" style="background:linear-gradient(135deg,#1e293b 0%,#334155 100%);margin-bottom:32px;">
+  <div class="section-title mb-4"><h2 style="color:#fff;"><i class="fa-solid fa-users-gear me-2" style="color:#38bdf8"></i>Teacher Roles &amp; Permissions</h2><p style="color:#94a3b8;">Hierarchical role-based access control</p></div>
+  <div class="row g-3">
+    <div class="col-md-3 col-sm-6">
+      <div class="role-card" style="border-top-color:var(--blue);">
+        <div class="role-icon" style="background:var(--blue-light);"><i class="fa-solid fa-person-chalkboard" style="color:var(--blue);"></i></div>
+        <h4>Professor</h4>
+        <span class="badge-pill" style="background:var(--blue-light);color:var(--blue);margin-bottom:8px;">Level 1</span>
+        <p>Mark &amp; update attendance for assigned stream and semester. View subject reports.</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="role-card" style="border-top-color:var(--orange);">
+        <div class="role-icon" style="background:var(--orange-light);"><i class="fa-solid fa-user-shield" style="color:var(--orange);"></i></div>
+        <h4>HOD</h4>
+        <span class="badge-pill" style="background:var(--orange-light);color:var(--orange);margin-bottom:8px;">Level 2</span>
+        <p>Monitor complete department attendance. Access all semester reports for department.</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="role-card" style="border-top-color:var(--purple);">
+        <div class="role-icon" style="background:var(--purple-light);"><i class="fa-solid fa-user-graduate" style="color:var(--purple);"></i></div>
+        <h4>Vice Principal</h4>
+        <span class="badge-pill" style="background:var(--purple-light);color:var(--purple);margin-bottom:8px;">Level 3</span>
+        <p>Monitor overall academic attendance across all departments and streams.</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="role-card" style="border-top-color:var(--red);">
+        <div class="role-icon" style="background:var(--red-light);"><i class="fa-solid fa-crown" style="color:var(--red);"></i></div>
+        <h4>Principal</h4>
+        <span class="badge-pill" style="background:var(--red-light);color:var(--red);margin-bottom:8px;">Level 4</span>
+        <p>Full access &mdash; monitor complete college attendance, all reports &amp; analytics.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 11. TECHNOLOGY STACK ===== -->
+<div class="section-title"><h2><i class="fa-solid fa-layer-group me-2" style="color:var(--blue)"></i>Technology Stack Architecture</h2><p>Full-stack Java web application architecture</p></div>
+<div class="row g-3 mb-4">
+  <div class="col-lg-8">
+    <div class="card-modern p-3">
+      <div class="tech-layer" style="background:var(--blue-light);">
+        <div class="layer-icon" style="background:var(--blue);color:#fff;"><i class="fa-solid fa-display"></i></div>
+        <div class="layer-info"><h4 style="color:var(--blue);">Presentation Layer &mdash; Frontend</h4><div class="tech-tags"><span>HTML5</span><span>CSS3</span><span>Bootstrap 5</span><span>JavaScript</span><span>JSP Pages</span></div></div>
+      </div>
+      <div style="display:flex;justify-content:center;color:var(--blue);margin:4px 0;"><i class="fa-solid fa-arrow-down fa-lg"></i></div>
+      <div class="tech-layer" style="background:var(--orange-light);">
+        <div class="layer-icon" style="background:var(--orange);color:#fff;"><i class="fa-brands fa-java"></i></div>
+        <div class="layer-info"><h4 style="color:var(--orange);">Business Logic Layer &mdash; Backend</h4><div class="tech-tags"><span>Java Servlet</span><span>HttpServlet</span><span>Session Mgmt</span><span>Filters</span></div></div>
+      </div>
+      <div style="display:flex;justify-content:center;color:var(--orange);margin:4px 0;"><i class="fa-solid fa-arrow-down fa-lg"></i></div>
+      <div class="tech-layer" style="background:var(--teal-light);">
+        <div class="layer-icon" style="background:var(--teal);color:#fff;"><i class="fa-solid fa-plug"></i></div>
+        <div class="layer-info"><h4 style="color:var(--teal);">Data Access Layer &mdash; JDBC</h4><div class="tech-tags"><span>JDBC API</span><span>PreparedStatement</span><span>ResultSet</span><span>Connection Pool</span></div></div>
+      </div>
+      <div style="display:flex;justify-content:center;color:var(--teal);margin:4px 0;"><i class="fa-solid fa-arrow-down fa-lg"></i></div>
+      <div class="tech-layer" style="background:var(--green-light);">
+        <div class="layer-icon" style="background:var(--green);color:#fff;"><i class="fa-solid fa-database"></i></div>
+        <div class="layer-info"><h4 style="color:#00897b;">Database Layer &mdash; MySQL</h4><div class="tech-tags"><span>MySQL 8.0</span><span>InnoDB Engine</span><span>Stored Procs</span><span>Indexing</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card-modern p-3 h-100">
+      <h5 style="font-weight:700;margin-bottom:16px;color:var(--gray-dark);"><i class="fa-solid fa-server me-2" style="color:var(--blue)"></i>Server &amp; Deployment</h5>
+      <div style="background:linear-gradient(135deg,#f97316,#ea580c);border-radius:12px;padding:16px;color:#fff;text-align:center;margin-bottom:12px;">
+        <i class="fa-solid fa-server" style="font-size:2rem;margin-bottom:8px;display:block;"></i>
+        <div style="font-weight:800;font-size:1.1rem;">Apache Tomcat</div>
+        <div style="font-size:.78rem;opacity:.9;margin-top:4px;">Servlet Container &bull; Port 8080</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:#f1f5f9;border-radius:8px;padding:10px 14px;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-file-code" style="color:var(--blue);"></i>web.xml &mdash; Servlet Mapping</div>
+        <div style="background:#f1f5f9;border-radius:8px;padding:10px 14px;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-folder" style="color:var(--orange);"></i>WEB-INF / classes / lib</div>
+        <div style="background:#f1f5f9;border-radius:8px;padding:10px 14px;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-shield" style="color:var(--green);"></i>HTTPS &bull; Session Security</div>
+        <div style="background:#f1f5f9;border-radius:8px;padding:10px 14px;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-globe" style="color:var(--purple);"></i>Responsive on All Browsers</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== 12. DATABASE STRUCTURE ===== -->
+<div class="section-title"><h2><i class="fa-solid fa-table-columns me-2" style="color:var(--blue)"></i>Database Schema</h2><p>MySQL relational database structure with all tables</p></div>
+<div class="row g-3 mb-4">
+  <!-- students -->
+  <div class="col-md-4 col-sm-6">
+    <div class="db-table-card">
+      <div class="db-thead" style="background:linear-gradient(135deg,var(--blue),var(--blue-dark));"><i class="fa-solid fa-users"></i>students</div>
+      <div class="db-field"><span class="pk-badge">PK</span><span class="field-name">id</span><span class="field-type">INT AUTO_INC</span></div>
+      <div class="db-field"><span class="field-name">name</span><span class="field-type">VARCHAR(100)</span></div>
+      <div class="db-field"><span class="field-name">enrollment_id</span><span class="field-type">VARCHAR(20) UNIQUE</span></div>
+      <div class="db-field"><span class="field-name">password</span><span class="field-type">VARCHAR(255)</span></div>
+      <div class="db-field"><span class="field-name">stream</span><span class="field-type">VARCHAR(50)</span></div>
+      <div class="db-field"><span class="fk-badge">FK</span><span class="field-name">semester_id</span><span class="field-type">INT</span></div>
+    </div>
+  </div>
+  <!-- teachers -->
+  <div class="col-md-4 col-sm-6">
+    <div class="db-table-card">
+      <div class="db-thead" style="background:linear-gradient(135deg,var(--red),var(--red-dark));"><i class="fa-solid fa-chalkboard-user"></i>teachers</div>
+      <div class="db-field"><span class="pk-badge">PK</span><span class="field-name">id</span><span class="field-type">INT AUTO_INC</span></div>
+      <div class="db-field"><span class="field-name">name</span><span class="field-type">VARCHAR(100)</span></div>
+      <div class="db-field"><span class="field-name">employee_id</span><span class="field-type">VARCHAR(20) UNIQUE</span></div>
+      <div class="db-field"><span class="field-name">password</span><span class="field-type">VARCHAR(255)</span></div>
+      <div class="db-field"><span class="field-name">role</span><span class="field-type">ENUM(Prof,HOD...)</span></div>
+      <div class="db-field"><span class="field-name">department</span><span class="field-type">VARCHAR(50)</span></div>
+    </div>
+  </div>
+  <!-- semesters -->
+  <div class="col-md-4 col-sm-6">
+    <div class="db-table-card">
+      <div class="db-thead" style="background:linear-gradient(135deg,var(--teal),#00897b);"><i class="fa-solid fa-layer-group"></i>semesters</div>
+      <div class="db-field"><span class="pk-badge">PK</span><span class="field-name">id</span><span class="field-type">INT AUTO_INC</span></div>
+      <div class="db-field"><span class="field-name">semester_name</span><span class="field-type">VARCHAR(20)</span></div>
+    </div>
+    <div class="db-table-card mt-3">
+      <div class="db-thead" style="background:linear-gradient(135deg,#7c3aed,#a855f7);"><i class="fa-solid fa-link"></i>teacher_semester</div>
+      <div class="db-field"><span class="fk-badge">FK</span><span class="field-name">teacher_id</span><span class="field-type">INT</span></div>
+      <div class="db-field"><span class="fk-badge">FK</span><span class="field-name">semester_id</span><span class="field-type">INT</span></div>
+    </div>
+  </div>
+  <!-- subjects -->
+  <div class="col-md-6">
+    <div class="db-table-card">
+      <div class="db-thead" style="background:linear-gradient(135deg,var(--orange),#ea580c);"><i class="fa-solid fa-book"></i>subjects</div>
+      <div class="db-field"><span class="pk-badge">PK</span><span class="field-name">id</span><span class="field-type">INT AUTO_INC</span></div>
+      <div class="db-field"><span class="field-name">subject_name</span><span class="field-type">VARCHAR(100)</span></div>
+      <div class="db-field"><span class="field-name">stream</span><span class="field-type">VARCHAR(50)</span></div>
+    </div>
+  </div>
+  <!-- attendance -->
+  <div class="col-md-6">
+    <div class="db-table-card">
+      <div class="db-thead" style="background:linear-gradient(135deg,var(--green),var(--teal));"><i class="fa-solid fa-clipboard-check"></i>attendance</div>
+      <div class="db-field"><span class="fk-badge">FK</span><span class="field-name">student_id</span><span class="field-type">INT</span></div>
+      <div class="db-field"><span class="fk-badge">FK</span><span class="field-name">teacher_id</span><span class="field-type">INT</span></div>
+      <div class="db-field"><span class="fk-badge">FK</span><span class="field-name">subject_id</span><span class="field-type">INT</span></div>
+      <div class="db-field"><span class="field-name">date</span><span class="field-type">DATE</span></div>
+      <div class="db-field"><span class="field-name">status</span><span class="field-type">ENUM(P,A)</span></div>
+    </div>
+  </div>
+</div>
+<!-- ===== 13. RESPONSIVE FEATURES ===== -->
+<div class="bg-section section-blue mb-4">
+  <div class="section-title mb-4"><h2><i class="fa-solid fa-mobile-screen-button me-2" style="color:var(--blue)"></i>Responsive Design Features</h2><p>Optimized for every screen size and device</p></div>
+  <div class="resp-grid">
+    <div class="resp-item"><i class="fa-solid fa-mobile-screen" style="color:var(--blue);"></i><h5>Mobile Friendly</h5><p>Touch-optimized UI with responsive layouts for all mobile devices</p></div>
+    <div class="resp-item"><i class="fa-brands fa-bootstrap" style="color:#7952b3;"></i><h5>Bootstrap Grid</h5><p>12-column Bootstrap 5 responsive grid system for adaptive layouts</p></div>
+    <div class="resp-item"><i class="fa-solid fa-globe" style="color:var(--teal);"></i><h5>Cross Browser</h5><p>Compatible with Chrome, Firefox, Edge, Safari &amp; Opera</p></div>
+    <div class="resp-item"><i class="fa-solid fa-bars" style="color:var(--orange);"></i><h5>Responsive Navbar</h5><p>Collapsible hamburger menu for tablet and mobile screens</p></div>
+    <div class="resp-item"><i class="fa-solid fa-table-cells-large" style="color:var(--purple);"></i><h5>Adaptive Cards</h5><p>Dashboard stat cards reflow from grid to single column on mobile</p></div>
+    <div class="resp-item"><i class="fa-solid fa-hand-pointer" style="color:var(--green);"></i><h5>Touch Friendly</h5><p>Large tap targets, swipe-friendly toggles for attendance marking</p></div>
+    <div class="resp-item"><i class="fa-solid fa-table" style="color:var(--red);"></i><h5>Responsive Tables</h5><p>Horizontally scrollable attendance tables on smaller screens</p></div>
+    <div class="resp-item"><i class="fa-solid fa-font" style="color:var(--blue-dark);"></i><h5>Fluid Typography</h5><p>CSS clamp() and em-based font sizes scale with viewport width</p></div>
+  </div>
+</div>
+
+<!-- ===== SUPPORTED STREAMS BANNER ===== -->
+<div class="card-modern mb-4" style="overflow:hidden;">
+  <div style="background:linear-gradient(135deg,#1e3a8a,#1e6fff);padding:20px 24px;color:#fff;">
+    <h4 style="font-weight:800;margin:0;"><i class="fa-solid fa-graduation-cap me-2"></i>Supported Streams / Courses</h4>
+    <p style="opacity:.85;margin:6px 0 0;font-size:.9rem;">Multi-stream support for all college departments</p>
+  </div>
+  <div style="padding:20px 24px;">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <div style="background:var(--blue-light);border:2px solid var(--blue);border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-microchip" style="color:var(--blue);font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:var(--blue);">B.Tech</span></div>
+      <div style="background:var(--purple-light);border:2px solid var(--purple);border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-flask" style="color:var(--purple);font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:var(--purple);">M.Tech</span></div>
+      <div style="background:var(--orange-light);border:2px solid var(--orange);border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-wrench" style="color:var(--orange);font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:var(--orange);">Diploma</span></div>
+      <div style="background:var(--green-light);border:2px solid var(--green);border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-pills" style="color:var(--green);font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:var(--green);">Pharmacy</span></div>
+      <div style="background:var(--teal-light);border:2px solid var(--teal);border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-briefcase" style="color:var(--teal);font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:var(--teal);">MBA</span></div>
+      <div style="background:#fce7f3;border:2px solid #db2777;border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-laptop-code" style="color:#db2777;font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:#db2777;">BCA</span></div>
+      <div style="background:#ecfeff;border:2px solid #0891b2;border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-code" style="color:#0891b2;font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:#0891b2;">MCA</span></div>
+      <div style="background:#fef9c3;border:2px solid #ca8a04;border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-heart-pulse" style="color:#ca8a04;font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:#ca8a04;">Nursing</span></div>
+      <div style="background:#fff1f2;border:2px solid #be123c;border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-chart-line" style="color:#be123c;font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:#be123c;">BBA</span></div>
+      <div style="background:var(--gray-light);border:2px solid var(--gray);border-radius:12px;padding:10px 18px;text-align:center;min-width:100px;"><i class="fa-solid fa-ellipsis" style="color:var(--gray);font-size:1.3rem;display:block;margin-bottom:4px;"></i><span style="font-weight:700;font-size:.82rem;color:var(--gray);">Others</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div style="background:linear-gradient(135deg,#1e293b,#334155);border-radius:var(--radius);padding:32px;text-align:center;color:#fff;margin-bottom:16px;">
+  <i class="fa-solid fa-building-columns" style="font-size:2.5rem;color:#38bdf8;margin-bottom:12px;display:block;"></i>
+  <h3 style="font-weight:800;font-size:1.4rem;margin-bottom:6px;">College Attendance Management System</h3>
+  <p style="opacity:.7;font-size:.9rem;margin-bottom:16px;">Final Year Major Project &bull; Java Full Stack Web Application</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:16px;">
+    <span style="background:rgba(255,255,255,.1);border-radius:50px;padding:5px 16px;font-size:.8rem;font-weight:600;"><i class="fa-brands fa-java me-1"></i>Java Servlet</span>
+    <span style="background:rgba(255,255,255,.1);border-radius:50px;padding:5px 16px;font-size:.8rem;font-weight:600;"><i class="fa-solid fa-database me-1"></i>MySQL</span>
+    <span style="background:rgba(255,255,255,.1);border-radius:50px;padding:5px 16px;font-size:.8rem;font-weight:600;"><i class="fa-solid fa-server me-1"></i>Apache Tomcat</span>
+    <span style="background:rgba(255,255,255,.1);border-radius:50px;padding:5px 16px;font-size:.8rem;font-weight:600;"><i class="fa-brands fa-bootstrap me-1"></i>Bootstrap 5</span>
+  </div>
+  <p style="opacity:.5;font-size:.78rem;">&copy; 2024&ndash;25 &bull; College Attendance Management System &bull; All Rights Reserved</p>
+</div>
+
+</div><!-- end .page -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Toggle attendance buttons
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.querySelectorAll('span').forEach(s => {
+    s.addEventListener('click', function() {
+      btn.querySelectorAll('span').forEach(x => {
+        x.style.background = '#e2e8f0'; x.style.color = '#64748b';
+      });
+      if(this.classList.contains('present')){
+        this.style.background = '#00c853'; this.style.color = '#fff';
+      } else {
+        this.style.background = '#e53935'; this.style.color = '#fff';
+      }
+    });
+  });
+});
+// Stream tag toggle
+document.querySelectorAll('.stream-tag').forEach(tag => {
+  tag.addEventListener('click', function() {
+    const isBlu = this.classList.contains('blue');
+    const color = isBlu ? '#1e6fff' : '#e53935';
+    const bg = isBlu ? '#e8f1ff' : '#ffebee';
+    if(this.style.background === 'rgb(30, 111, 255)' || this.style.background === 'rgb(229, 57, 53)'){
+      this.style.background = bg; this.style.color = color; this.style.borderColor = color;
+    } else {
+      this.style.background = color; this.style.color = '#fff'; this.style.borderColor = color;
+    }
+  });
+});
+</script>
+</body>
+</html>
