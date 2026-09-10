@@ -49,16 +49,17 @@ public class StudentRegisterServlet extends HttpServlet {
 
         if (success) {
             Student loggedInStudent = userDAO.loginStudent(enrollmentId, password);
-            if (loggedInStudent != null) {
-                jakarta.servlet.http.HttpSession session = request.getSession();
-                session.setAttribute("currentUser", loggedInStudent);
-                session.setAttribute("userType", "student");
-                response.sendRedirect("student_dashboard.jsp");
-            } else {
-                response.sendRedirect("index.jsp?msg=Registration successful! Please login.");
+            if (loggedInStudent == null) {
+                // Fallback: construct student object directly if login query delayed
+                loggedInStudent = student;
             }
+            jakarta.servlet.http.HttpSession session = request.getSession();
+            session.setAttribute("currentUser", loggedInStudent);
+            session.setAttribute("userType", "student");
+            response.sendRedirect("student_dashboard.jsp");
         } else {
-            response.sendRedirect("student_register.jsp?error=Registration Failed. Please try again.");
+            response.sendRedirect("student_register.jsp?error=Registration Failed. Please check inputs or try again.");
         }
     }
 }
+

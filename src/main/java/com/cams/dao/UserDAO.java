@@ -138,6 +138,7 @@ public class UserDAO {
                     student.setId(rs.getInt("id"));
                     student.setName(rs.getString("name"));
                     student.setEnrollmentId(rs.getString("enrollment_id"));
+                    student.setEmail(rs.getString("email"));
                     student.setStream(rs.getString("stream"));
                     student.setSemesterId(rs.getInt("semester_id"));
                     return student;
@@ -162,6 +163,7 @@ public class UserDAO {
                     faculty.setId(fid);
                     faculty.setName(rs.getString("name"));
                     faculty.setEmployeeId(rs.getString("employee_id"));
+                    faculty.setEmail(rs.getString("email"));
                     faculty.setRole(rs.getString("role"));
                     faculty.setDepartment(rs.getString("department"));
                     
