@@ -22,6 +22,7 @@ public class FacultyRegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name") != null ? request.getParameter("name").trim() : "";
         String employeeId = request.getParameter("employeeId") != null ? request.getParameter("employeeId").trim() : "";
+        String email = request.getParameter("email") != null ? request.getParameter("email").trim() : "";
         String password = request.getParameter("password") != null ? request.getParameter("password").trim() : "";
         String role = request.getParameter("role");
         String department = request.getParameter("department");
@@ -30,6 +31,7 @@ public class FacultyRegisterServlet extends HttpServlet {
         Faculty faculty = new Faculty();
         faculty.setName(name);
         faculty.setEmployeeId(employeeId);
+        faculty.setEmail(email);
         faculty.setPassword(password);
         faculty.setRole(role);
         faculty.setDepartment(department);

@@ -48,13 +48,17 @@
                         <form action="FacultyRegisterServlet" method="POST">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Full Name><sup>*</sup></label>
+                                    <label class="form-label">Full Name<sup>*</sup></label>
                                     <input type="text" name="name" class="form-control" required placeholder="Prof. Jane Smith">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Employee ID<sup>*</sup></label>
                                     <input type="text" name="employeeId" class="form-control" required placeholder="EMP2024010">
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email Address<sup>*</sup></label>
+                                <input type="email" name="email" class="form-control" required placeholder="faculty@example.com">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password<sup>*</sup></label>

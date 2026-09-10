@@ -15,14 +15,15 @@ import java.util.List;
 public class UserDAO {
 
     public boolean registerStudent(Student student) {
-        String sql = "INSERT INTO students (name, enrollment_id, password, stream, semester_id) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO students (name, enrollment_id, email, password, stream, semester_id) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, student.getName());
             ps.setString(2, student.getEnrollmentId());
-            ps.setString(3, student.getPassword());
-            ps.setString(4, student.getStream());
-            ps.setInt(5, student.getSemesterId());
+            ps.setString(3, student.getEmail());
+            ps.setString(4, student.getPassword());
+            ps.setString(5, student.getStream());
+            ps.setInt(6, student.getSemesterId());
             
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
@@ -33,7 +34,7 @@ public class UserDAO {
     }
 
     public boolean registerFaculty(Faculty faculty, String[] semesterIds) {
-        String sql = "INSERT INTO faculty (name, employee_id, password, role, department) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO faculty (name, employee_id, email, password, role, department) VALUES (?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         try {
             conn = DBConnection.getConnection();
@@ -42,9 +43,10 @@ public class UserDAO {
             try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, faculty.getName());
                 ps.setString(2, faculty.getEmployeeId());
-                ps.setString(3, faculty.getPassword());
-                ps.setString(4, faculty.getRole());
-                ps.setString(5, faculty.getDepartment());
+                ps.setString(3, faculty.getEmail());
+                ps.setString(4, faculty.getPassword());
+                ps.setString(5, faculty.getRole());
+                ps.setString(6, faculty.getDepartment());
                 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
@@ -90,6 +92,7 @@ public class UserDAO {
         }
         return false;
     }
+
 
     public Student loginStudent(String enrollmentId, String password) {
         String sql = "SELECT * FROM students WHERE enrollment_id = ? AND password = ?";
@@ -220,14 +223,45 @@ public class UserDAO {
         return false;
     }
 
-    // Reset student password after validating enrollment_id and name
-    public boolean resetStudentPassword(String enrollmentId, String name, String newPassword) {
-        String sql = "UPDATE students SET password = ? WHERE enrollment_id = ? AND LOWER(name) = LOWER(?)";
+    // Verify student by enrollment_id and email
+    public boolean verifyStudentEmail(String enrollmentId, String email) {
+        String sql = "SELECT id FROM students WHERE enrollment_id = ? AND LOWER(email) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, enrollmentId);
+            ps.setString(2, email.trim());
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Verify faculty by employee_id and email
+    public boolean verifyFacultyEmail(String employeeId, String email) {
+        String sql = "SELECT id FROM faculty WHERE employee_id = ? AND LOWER(email) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, employeeId);
+            ps.setString(2, email.trim());
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Update student password by enrollment_id
+    public boolean updateStudentPassword(String enrollmentId, String newPassword) {
+        String sql = "UPDATE students SET password = ? WHERE enrollment_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, newPassword);
             ps.setString(2, enrollmentId);
-            ps.setString(3, name);
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -235,14 +269,13 @@ public class UserDAO {
         return false;
     }
 
-    // Reset faculty password after validating employee_id and name
-    public boolean resetFacultyPassword(String employeeId, String name, String newPassword) {
-        String sql = "UPDATE faculty SET password = ? WHERE employee_id = ? AND LOWER(name) = LOWER(?)";
+    // Update faculty password by employee_id
+    public boolean updateFacultyPassword(String employeeId, String newPassword) {
+        String sql = "UPDATE faculty SET password = ? WHERE employee_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, newPassword);
             ps.setString(2, employeeId);
-            ps.setString(3, name);
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -250,4 +283,5 @@ public class UserDAO {
         return false;
     }
 }
+
 

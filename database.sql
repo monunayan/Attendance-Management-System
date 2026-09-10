@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS students (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     enrollment_id VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     stream ENUM('B.Tech', 'M.Tech', 'Diploma', 'B.Pharma', 'M.Pharma', 'Nursing', 'MBA') NOT NULL,
     semester_id INT,
@@ -36,10 +37,12 @@ CREATE TABLE IF NOT EXISTS faculty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     employee_id VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('Professor', 'HOD', 'Vice Principal', 'Principal') NOT NULL,
     department ENUM('B.Tech', 'M.Tech', 'Diploma', 'B.Pharma', 'M.Pharma', 'Nursing', 'MBA') NOT NULL
 );
+
 
 CREATE TABLE IF NOT EXISTS faculty_semester (
     faculty_id INT,

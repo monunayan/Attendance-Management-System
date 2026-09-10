@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    String step = request.getParameter("step");
+    boolean isStep2 = "2".equals(step);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password - College Attendance Management System</title>
+    <title>Forgot Password - OTP Verification</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -34,15 +38,15 @@
                 <img src="image/vns_logo.png" alt="VNS Group of Colleges" style="max-height: 80px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
             </div>
             <h1 class="fw-bold">College Attendance System</h1>
-            <p class="mb-0">Reset Your Account Password</p>
+            <p class="mb-0">Reset Password via OTP Verification</p>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
                 <div class="card-modern">
                     <div class="card-header-purple text-center">
-                        <i class="fa-solid fa-key fs-1 mb-2"></i>
-                        <h3 class="m-0 fw-bold">Forgot Password</h3>
+                        <i class="fa-solid fa-shield-halved fs-1 mb-2"></i>
+                        <h3 class="m-0 fw-bold"><%= isStep2 ? "Verify OTP & Reset" : "Forgot Password" %></h3>
                     </div>
                     <div class="card-body p-4">
                         <% if(request.getParameter("error") != null) { %>
@@ -52,32 +56,48 @@
                             <div class="alert alert-success"><%= request.getParameter("msg") %></div>
                         <% } %>
 
-                        <form action="ForgotPasswordServlet" method="POST">
-                            <div class="mb-3">
-                                <label class="form-label"><i class="fa-solid fa-users me-1"></i>User Type<sup>*</sup></label>
-                                <select name="userType" class="form-select" required>
-                                    <option value="" disabled selected>Select User Type...</option>
-                                    <option value="student">Student</option>
-                                    <option value="faculty">Faculty</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label"><i class="fa-solid fa-id-card me-1"></i>User ID (Enrollment / Employee ID)<sup>*</sup></label>
-                                <input type="text" name="userId" class="form-control" required placeholder="e.g. EN2024001 or EMP101">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label"><i class="fa-solid fa-user me-1"></i>Full Name (For Verification)<sup>*</sup></label>
-                                <input type="text" name="name" class="form-control" required placeholder="Enter registered full name">
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label"><i class="fa-solid fa-lock me-1"></i>New Password<sup>*</sup></label>
-                                <div class="position-relative">
-                                    <input type="password" name="newPassword" id="newPass" class="form-control" required placeholder="Enter new password">
-                                    <i class="fa-solid fa-eye position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; color: #6c757d; z-index: 10;" onclick="togglePassword('newPass', this)"></i>
+                        <% if (!isStep2) { %>
+                            <!-- STEP 1: Request OTP -->
+                            <form action="ForgotPasswordServlet" method="POST">
+                                <input type="hidden" name="action" value="send_otp">
+                                
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-users me-1"></i>User Type<sup>*</sup></label>
+                                    <select name="userType" class="form-select" required>
+                                        <option value="" disabled selected>Select User Type...</option>
+                                        <option value="student">Student</option>
+                                        <option value="faculty">Faculty</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn-purple"><i class="fa-solid fa-rotate me-2"></i>Reset Password</button>
-                        </form>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-id-card me-1"></i>User ID (Enrollment / Employee ID)<sup>*</sup></label>
+                                    <input type="text" name="userId" class="form-control" required placeholder="e.g. EN2024001 or EMP101">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label"><i class="fa-solid fa-envelope me-1"></i>Registered Email Address<sup>*</sup></label>
+                                    <input type="email" name="email" class="form-control" required placeholder="Enter registered email">
+                                </div>
+                                <button type="submit" class="btn-purple"><i class="fa-solid fa-paper-plane me-2"></i>Send OTP to Email</button>
+                            </form>
+                        <% } else { %>
+                            <!-- STEP 2: Verify OTP & Reset Password -->
+                            <form action="ForgotPasswordServlet" method="POST">
+                                <input type="hidden" name="action" value="verify_reset">
+                                
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-key me-1"></i>Enter OTP<sup>*</sup></label>
+                                    <input type="text" name="otp" class="form-control text-center fs-5 fw-bold letter-spacing-2" maxlength="6" required placeholder="6-Digit OTP">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label"><i class="fa-solid fa-lock me-1"></i>New Password<sup>*</sup></label>
+                                    <div class="position-relative">
+                                        <input type="password" name="newPassword" id="otpNewPass" class="form-control" required placeholder="Enter new password">
+                                        <i class="fa-solid fa-eye position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; color: #6c757d; z-index: 10;" onclick="togglePassword('otpNewPass', this)"></i>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-purple"><i class="fa-solid fa-check-circle me-2"></i>Verify OTP & Update Password</button>
+                            </form>
+                        <% } %>
                     </div>
                     <div class="card-footer bg-light p-3 text-center">
                         <a href="index.jsp" class="text-decoration-none fw-bold text-primary"><i class="fa-solid fa-arrow-left me-1"></i>Back to Login</a>

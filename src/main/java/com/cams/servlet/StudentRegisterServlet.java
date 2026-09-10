@@ -22,6 +22,7 @@ public class StudentRegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name") != null ? request.getParameter("name").trim() : "";
         String enrollmentId = request.getParameter("enrollmentId") != null ? request.getParameter("enrollmentId").trim() : "";
+        String email = request.getParameter("email") != null ? request.getParameter("email").trim() : "";
         String password = request.getParameter("password") != null ? request.getParameter("password").trim() : "";
         String stream = request.getParameter("stream");
         String semesterIdStr = request.getParameter("semesterId");
@@ -34,6 +35,7 @@ public class StudentRegisterServlet extends HttpServlet {
         Student student = new Student();
         student.setName(name);
         student.setEnrollmentId(enrollmentId);
+        student.setEmail(email);
         student.setPassword(password);
         student.setStream(stream);
         student.setSemesterId(semesterId);

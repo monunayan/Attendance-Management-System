@@ -55,6 +55,10 @@
                                 <input type="text" name="enrollmentId" class="form-control" required placeholder="EN2024001">
                             </div>
                             <div class="mb-3">
+                                <label class="form-label">Email Address<sup>*</sup></label>
+                                <input type="email" name="email" class="form-control" required placeholder="student@example.com">
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Password<sup class="super" style=>*</sup></label>
                                 <div class="position-relative">
                                     <input type="password" name="password" id="studentRegPass" class="form-control" required>
