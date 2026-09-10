@@ -44,15 +44,19 @@ public class ForgotPasswordServlet extends HttpServlet {
 
                 if (isValid) {
                     String otp = EmailUtil.generateOTP();
-                    EmailUtil.sendOTPEmail(email, otp);
+                    boolean emailSent = EmailUtil.sendOTPEmail(email, otp);
 
-                    // Store OTP & metadata in session
-                    session.setAttribute("reset_otp", otp);
-                    session.setAttribute("reset_user_type", userType);
-                    session.setAttribute("reset_user_id", userId);
-                    session.setAttribute("reset_email", email);
+                    if (emailSent) {
+                        // Store OTP & metadata in session
+                        session.setAttribute("reset_otp", otp);
+                        session.setAttribute("reset_user_type", userType);
+                        session.setAttribute("reset_user_id", userId);
+                        session.setAttribute("reset_email", email);
 
-                    response.sendRedirect("forgot_password.jsp?step=2&msg=OTP sent successfully to " + email + ". Please check your email inbox.");
+                        response.sendRedirect("forgot_password.jsp?step=2&msg=OTP sent successfully to " + email + ". Please check your email inbox (including Spam folder).");
+                    } else {
+                        response.sendRedirect("forgot_password.jsp?error=Failed to send OTP email. Please check your internet connection or email address!");
+                    }
                 } else {
                     response.sendRedirect("forgot_password.jsp?error=Invalid User ID or Email. Record not found!");
                 }
