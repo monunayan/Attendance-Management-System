@@ -259,10 +259,11 @@ public class UserDAO {
 
     // Verify student by enrollment_id and email
     public boolean verifyStudentEmail(String enrollmentId, String email) {
-        String sql = "SELECT id FROM students WHERE enrollment_id = ? AND LOWER(email) = LOWER(?)";
+        if (enrollmentId == null || email == null) return false;
+        String sql = "SELECT id FROM students WHERE enrollment_id = ? AND LOWER(TRIM(email)) = LOWER(TRIM(?))";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, enrollmentId);
+            ps.setString(1, enrollmentId.trim());
             ps.setString(2, email.trim());
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next();
@@ -275,10 +276,11 @@ public class UserDAO {
 
     // Verify faculty by employee_id and email
     public boolean verifyFacultyEmail(String employeeId, String email) {
-        String sql = "SELECT id FROM faculty WHERE employee_id = ? AND LOWER(email) = LOWER(?)";
+        if (employeeId == null || email == null) return false;
+        String sql = "SELECT id FROM faculty WHERE employee_id = ? AND LOWER(TRIM(email)) = LOWER(TRIM(?))";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, employeeId);
+            ps.setString(1, employeeId.trim());
             ps.setString(2, email.trim());
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next();
