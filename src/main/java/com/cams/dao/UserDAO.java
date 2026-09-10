@@ -219,4 +219,35 @@ public class UserDAO {
         }
         return false;
     }
+
+    // Reset student password after validating enrollment_id and name
+    public boolean resetStudentPassword(String enrollmentId, String name, String newPassword) {
+        String sql = "UPDATE students SET password = ? WHERE enrollment_id = ? AND LOWER(name) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newPassword);
+            ps.setString(2, enrollmentId);
+            ps.setString(3, name);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Reset faculty password after validating employee_id and name
+    public boolean resetFacultyPassword(String employeeId, String name, String newPassword) {
+        String sql = "UPDATE faculty SET password = ? WHERE employee_id = ? AND LOWER(name) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newPassword);
+            ps.setString(2, employeeId);
+            ps.setString(3, name);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
+

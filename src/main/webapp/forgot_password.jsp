@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Registration</title>
+    <title>Forgot Password - College Attendance Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
         .social-icons { display: flex; justify-content: center; gap: 14px; margin: 12px 0; }
@@ -24,91 +24,63 @@
         .social-icons a.fb:hover { background: #1877f2; color: #fff; transform: translateY(-3px); box-shadow: 0 6px 18px rgba(24,119,242,.35); }
         .social-icons a.li { color: #0a66c2; border-color: #0a66c2; }
         .social-icons a.li:hover { background: #0a66c2; color: #fff; transform: translateY(-3px); box-shadow: 0 6px 18px rgba(10,102,194,.35); }
-        .college-link { font-weight: 700; color: #1e6fff !important; }
-        .college-link:hover { background: #1e6fff !important; color: #fff !important; }
-         sup { color: #e53935 !important; font-weight: 700 !important; }
+        sup { color: #e53935 !important; font-weight: 700 !important; }
     </style>
 </head>
 <body>
     <div class="container py-5">
+        <div class="hero">
+            <div class="text-center mb-3">
+                <img src="image/vns_logo.png" alt="VNS Group of Colleges" style="max-height: 80px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+            </div>
+            <h1 class="fw-bold">College Attendance System</h1>
+            <p class="mb-0">Reset Your Account Password</p>
+        </div>
+
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-7">
+            <div class="col-md-6 col-lg-5">
                 <div class="card-modern">
-                    <div class="card-header-red d-flex align-items-center gap-3">
-                        <i class="fa-solid fa-chalkboard-user fs-1"></i>
-                        <div>
-                            <h3 class="m-0 fw-bold">Faculty Registration</h3>
-                            <small class="opacity-75">Create your faculty account</small>
-                        </div>
+                    <div class="card-header-purple text-center">
+                        <i class="fa-solid fa-key fs-1 mb-2"></i>
+                        <h3 class="m-0 fw-bold">Forgot Password</h3>
                     </div>
                     <div class="card-body p-4">
                         <% if(request.getParameter("error") != null) { %>
                             <div class="alert alert-danger"><%= request.getParameter("error") %></div>
                         <% } %>
-                        <form action="FacultyRegisterServlet" method="POST">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Full Name><sup>*</sup></label>
-                                    <input type="text" name="name" class="form-control" required placeholder="Prof. Jane Smith">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Employee ID<sup>*</sup></label>
-                                    <input type="text" name="employeeId" class="form-control" required placeholder="EMP2024010">
-                                </div>
+                        <% if(request.getParameter("msg") != null) { %>
+                            <div class="alert alert-success"><%= request.getParameter("msg") %></div>
+                        <% } %>
+
+                        <form action="ForgotPasswordServlet" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fa-solid fa-users me-1"></i>User Type<sup>*</sup></label>
+                                <select name="userType" class="form-select" required>
+                                    <option value="" disabled selected>Select User Type...</option>
+                                    <option value="student">Student</option>
+                                    <option value="faculty">Faculty</option>
+                                </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Password<sup>*</sup></label>
+                                <label class="form-label"><i class="fa-solid fa-id-card me-1"></i>User ID (Enrollment / Employee ID)<sup>*</sup></label>
+                                <input type="text" name="userId" class="form-control" required placeholder="e.g. EN2024001 or EMP101">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fa-solid fa-user me-1"></i>Full Name (For Verification)<sup>*</sup></label>
+                                <input type="text" name="name" class="form-control" required placeholder="Enter registered full name">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label"><i class="fa-solid fa-lock me-1"></i>New Password<sup>*</sup></label>
                                 <div class="position-relative">
-                                    <input type="password" name="password" id="facultyRegPass" class="form-control" required>
-                                    <i class="fa-solid fa-eye position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; color: #6c757d; z-index: 10;" onclick="togglePassword('facultyRegPass', this)"></i>
+                                    <input type="password" name="newPassword" id="newPass" class="form-control" required placeholder="Enter new password">
+                                    <i class="fa-solid fa-eye position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; color: #6c757d; z-index: 10;" onclick="togglePassword('newPass', this)"></i>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Role<sup>*</sup></label>
-                                    <select name="role" class="form-select" required>
-                                        <option value="" disabled selected>Select Role...</option>
-                                        <option value="Professor">Professor</option>
-                                        <option value="HOD">HOD</option>
-                                        <option value="Vice Principal">Vice Principal</option>
-                                        <option value="Principal">Principal</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Stream / Department<sup>*</sup></label>
-                                    <select name="department" class="form-select" required>
-                                        <option value="" disabled selected>Select Stream...</option>
-                                        <option value="B.Tech">B.Tech</option>
-                                        <option value="M.Tech">M.Tech</option>
-                                        <option value="Diploma">Diploma</option>
-                                        <option value="B.Pharma">B.Pharma</option>
-                                        <option value="M.Pharma">M.Pharma</option>
-                                        <option value="Nursing">Nursing</option>
-                                        <option value="MBA">MBA</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <!-- Multi-select Semester Options -->
-                            <div class="mb-4 bg-light p-3 rounded-3 border">
-                                <label class="form-label d-block mb-2 text-primary"><i class="fa-solid fa-layer-group me-1"></i>Select Assigned Semesters<sup>*</sup></label>
-                                <div class="row g-2">
-                                    <% for(int i=1; i<=8; i++) { %>
-                                    <div class="col-md-3 col-sm-4 col-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input border-secondary" type="checkbox" name="semesters" value="<%= i %>" id="sem<%= i %>">
-                                            <label class="form-check-label fw-bold" for="sem<%= i %>">Semester <%= i %></label>
-                                        </div>
-                                    </div>
-                                    <% } %>
-                                </div>
-                            </div>
-
-                            <button type="submit" class="btn-red mb-3"><i class="fa-solid fa-user-plus me-2"></i>Register Faculty</button>
-                            <div class="text-center">
-                                <a href="index.jsp" class="text-decoration-none fw-bold text-muted"><i class="fa-solid fa-arrow-left me-1"></i>Back to Login</a>
-                            </div>
+                            <button type="submit" class="btn-purple"><i class="fa-solid fa-rotate me-2"></i>Reset Password</button>
                         </form>
+                    </div>
+                    <div class="card-footer bg-light p-3 text-center">
+                        <a href="index.jsp" class="text-decoration-none fw-bold text-primary"><i class="fa-solid fa-arrow-left me-1"></i>Back to Login</a>
                     </div>
                 </div>
             </div>
@@ -127,19 +99,16 @@
             <i class="fa-solid fa-phone me-1"></i>+91-0755-2696654
         </p>
         <div class="social-icons">
-            <!-- Instagram -->
             <a href="https://www.instagram.com/vns_bhopal/" target="_blank" class="insta" title="Instagram">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
             </a>
-            <!-- Facebook -->
             <a href="https://www.facebook.com/vnsbhopal/" target="_blank" class="fb" title="Facebook">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
             </a>
-            <!-- LinkedIn -->
             <a href="https://www.linkedin.com/school/vns-group-of-institutions/" target="_blank" class="li" title="LinkedIn">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>

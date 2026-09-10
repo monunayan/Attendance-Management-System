@@ -26,6 +26,7 @@
         .social-icons a.li:hover { background: #0a66c2; color: #fff; transform: translateY(-3px); box-shadow: 0 6px 18px rgba(10,102,194,.35); }
         .college-link { font-weight: 700; color: #1e6fff !important; }
         .college-link:hover { background: #1e6fff !important; color: #fff !important; }
+        sup { color: #e53935 !important; font-weight: 700 !important; }
     </style>
 </head>
 <body>

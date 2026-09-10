@@ -26,6 +26,7 @@
         .social-icons a.li:hover { background: #0a66c2; color: #fff; transform: translateY(-3px); box-shadow: 0 6px 18px rgba(10,102,194,.35); }
         .college-link { font-weight: 700; color: #1e6fff !important; }
         .college-link:hover { background: #1e6fff !important; color: #fff !important; }
+         sup { color: #e53935 !important; font-weight: 700 !important; }
     </style>
 </head>
 <body>
@@ -55,18 +56,21 @@
 
                         <form action="LoginServlet" method="POST">
                             <div class="mb-3">
-                                <label class="form-label"><i class="fa-solid fa-id-card me-1"></i>User ID (Enrollment/Employee)</label>
+                                <label class="form-label"><i class="fa-solid fa-id-card me-1"></i>User ID (Enrollment/Employee)<sup>*</sup></label>
                                 <input type="text" name="userId" class="form-control" required placeholder="e.g. EN2024001">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label"><i class="fa-solid fa-lock me-1"></i>Password</label>
+                                <label class="form-label"><i class="fa-solid fa-lock me-1"></i>Password<sup>*</sup></label>
                                 <div class="position-relative">
                                     <input type="password" name="password" id="loginPass" class="form-control" required>
                                     <i class="fa-solid fa-eye position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; color: #6c757d; z-index: 10;" onclick="togglePassword('loginPass', this)"></i>
                                 </div>
+                                <div class="text-end mt-1">
+                                    <a href="forgot_password.jsp" class="small text-decoration-none text-purple fw-semibold" style="color: var(--purple);">Forgot Password?</a>
+                                </div>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label"><i class="fa-solid fa-users me-1"></i>Login As</label>
+                                <label class="form-label"><i class="fa-solid fa-users me-1"></i>Login As<sup>*</sup></label>
                                 <select name="userType" class="form-select" required>
                                     <option value="" disabled selected>Select User Type...</option>
                                     <option value="student">Student</option>
