@@ -14,6 +14,38 @@ import java.util.List;
 
 public class UserDAO {
 
+    // Check if Student enrollment_id or email already exists
+    public boolean isStudentExists(String enrollmentId, String email) {
+        String sql = "SELECT id FROM students WHERE enrollment_id = ? OR LOWER(email) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, enrollmentId.trim());
+            ps.setString(2, email.trim());
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Check if Faculty employee_id or email already exists
+    public boolean isFacultyExists(String employeeId, String email) {
+        String sql = "SELECT id FROM faculty WHERE employee_id = ? OR LOWER(email) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, employeeId.trim());
+            ps.setString(2, email.trim());
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public boolean registerStudent(Student student) {
         String sql = "INSERT INTO students (name, enrollment_id, email, password, stream, semester_id) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();

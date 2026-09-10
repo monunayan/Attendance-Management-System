@@ -28,6 +28,11 @@ public class FacultyRegisterServlet extends HttpServlet {
         String department = request.getParameter("department");
         String[] semesters = request.getParameterValues("semesters"); // Multiple semesters
 
+        if (userDAO.isFacultyExists(employeeId, email)) {
+            response.sendRedirect("faculty_register.jsp?error=Employee ID or Email address is already registered!");
+            return;
+        }
+
         Faculty faculty = new Faculty();
         faculty.setName(name);
         faculty.setEmployeeId(employeeId);

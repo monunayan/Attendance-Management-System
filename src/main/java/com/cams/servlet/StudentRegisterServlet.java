@@ -32,6 +32,11 @@ public class StudentRegisterServlet extends HttpServlet {
             semesterId = Integer.parseInt(semesterIdStr);
         }
 
+        if (userDAO.isStudentExists(enrollmentId, email)) {
+            response.sendRedirect("student_register.jsp?error=Enrollment ID or Email address is already registered!");
+            return;
+        }
+
         Student student = new Student();
         student.setName(name);
         student.setEnrollmentId(enrollmentId);
