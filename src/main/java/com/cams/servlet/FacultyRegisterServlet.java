@@ -44,7 +44,15 @@ public class FacultyRegisterServlet extends HttpServlet {
         boolean success = userDAO.registerFaculty(faculty, semesters);
 
         if (success) {
-            response.sendRedirect("index.jsp?msg=Faculty Registered Successfully! Please Login.");
+            Faculty loggedInFaculty = userDAO.loginFaculty(employeeId, password);
+            if (loggedInFaculty != null) {
+                jakarta.servlet.http.HttpSession session = request.getSession();
+                session.setAttribute("currentUser", loggedInFaculty);
+                session.setAttribute("userType", "faculty");
+                response.sendRedirect("faculty_dashboard.jsp");
+            } else {
+                response.sendRedirect("index.jsp?msg=Registration successful! Please login.");
+            }
         } else {
             response.sendRedirect("faculty_register.jsp?error=Registration Failed. Please try again.");
         }
