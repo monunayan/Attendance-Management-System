@@ -102,8 +102,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             }
         } catch (Throwable t) {
             t.printStackTrace();
-            String errMsg = t.getMessage() != null ? t.getMessage() : t.getClass().getName();
-            response.sendRedirect("forgot_password.jsp?error=Error: " + java.net.URLEncoder.encode(errMsg, "UTF-8"));
+            response.sendRedirect("forgot_password.jsp?error=An unexpected error occurred. Please try again.");
         }
     }
 }
