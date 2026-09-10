@@ -52,7 +52,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                     session.setAttribute("reset_user_id", userId);
                     session.setAttribute("reset_email", email);
 
-                    response.sendRedirect("forgot_password.jsp?step=2&msg=OTP sent to " + email + "! (Your 6-Digit OTP: " + otp + ")");
+                    response.sendRedirect("forgot_password.jsp?step=2&msg=OTP sent successfully to " + email + ". Please check your email inbox.");
                 } else {
                     response.sendRedirect("forgot_password.jsp?error=Invalid User ID or Email. Record not found!");
                 }
