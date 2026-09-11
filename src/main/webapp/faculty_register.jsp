@@ -84,9 +84,11 @@
                                         <option value="" disabled selected>Select Stream...</option>
                                         <option value="B.Tech">B.Tech</option>
                                         <option value="M.Tech">M.Tech</option>
-                                        <option value="Diploma">Diploma</option>
+                                        <option value="Diploma (Engg)">Diploma (Engg)</option>
                                         <option value="B.Pharma">B.Pharma</option>
                                         <option value="M.Pharma">M.Pharma</option>
+                                        <option value="D.Pharma">D.Pharma</option>
+                                        <option value="Physical Education">Physical Education</option>
                                         <option value="Nursing">Nursing</option>
                                         <option value="MBA">MBA</option>
                                     </select>

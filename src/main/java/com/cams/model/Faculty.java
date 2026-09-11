@@ -7,6 +7,7 @@ public class Faculty {
     private int id;
     private String name;
     private String employeeId;
+    private String email;
     private String password;
     private String role;
     private String department;

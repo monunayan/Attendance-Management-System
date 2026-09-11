@@ -106,9 +106,18 @@ public class EmailUtil {
 
     private static String readResponse(BufferedReader reader) throws Exception {
         String line = reader.readLine();
+        String lastLine = line;
         if (line != null) {
             System.out.println("[SMTP Server] " + line);
+            // Multi-line SMTP responses have format: "XXX-text" for continuation, "XXX text" for last line
+            while (line != null && line.length() >= 4 && line.charAt(3) == '-') {
+                line = reader.readLine();
+                if (line != null) {
+                    System.out.println("[SMTP Server] " + line);
+                    lastLine = line;
+                }
+            }
         }
-        return line;
+        return lastLine;
     }
 }

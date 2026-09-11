@@ -164,6 +164,18 @@
                     </div>
                 <% } %>
 
+                <!-- Biometric / Fingerprint Login Section -->
+                <div id="bioLoginCard" class="alert alert-light border d-flex justify-content-between align-items-center mb-4" style="background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);">
+                    <div>
+                        <i id="bioIcon" class="fa-solid fa-fingerprint text-success fs-4 me-2"></i>
+                        <strong id="bioTitle">Fingerprint / Biometric Login</strong>
+                        <br><small id="bioSubtext" class="text-muted">Enable quick login using your device's Fingerprint or Face ID</small>
+                    </div>
+                    <button type="button" id="bioBtn" onclick="registerBiometric('<%= faculty.getEmployeeId() %>', 'faculty')" class="btn btn-success btn-sm rounded-pill fw-bold px-3">
+                        <i class="fa-solid fa-fingerprint me-1"></i>Enable Fingerprint Login
+                    </button>
+                </div>
+
                 <!-- Semester Buttons -->
                 <h6 class="fw-bold text-muted mb-3"><i class="fa-solid fa-layer-group me-1"></i>Your Assigned Semesters</h6>
                 <% if (assignedSems == null || assignedSems.isEmpty()) { %>
@@ -356,6 +368,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/biometric.js"></script>
     <script>
         function confirmDelete(name) {
             return confirm('"' + name + '" subject delete karna chahte hain?\nIs subject ki sari attendance records bhi delete ho sakti hain!');

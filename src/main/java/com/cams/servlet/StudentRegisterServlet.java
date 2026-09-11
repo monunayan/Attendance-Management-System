@@ -24,16 +24,39 @@ public class StudentRegisterServlet extends HttpServlet {
         String enrollmentId = request.getParameter("enrollmentId") != null ? request.getParameter("enrollmentId").trim() : "";
         String email = request.getParameter("email") != null ? request.getParameter("email").trim() : "";
         String password = request.getParameter("password") != null ? request.getParameter("password").trim() : "";
-        String stream = request.getParameter("stream");
-        String semesterIdStr = request.getParameter("semesterId");
+        String stream = request.getParameter("stream") != null ? request.getParameter("stream").trim() : "";
+        String semesterIdStr = request.getParameter("semesterId") != null ? request.getParameter("semesterId").trim() : "";
 
-        int semesterId = 1;
-        if (semesterIdStr != null && !semesterIdStr.isEmpty()) {
-            semesterId = Integer.parseInt(semesterIdStr);
+        if (name.isEmpty() || enrollmentId.isEmpty() || email.isEmpty() || password.isEmpty() || stream.isEmpty() || semesterIdStr.isEmpty()) {
+            response.sendRedirect("student_register.jsp?error=Please fill in all required fields.");
+            return;
         }
 
-        if (userDAO.isStudentExists(enrollmentId, email)) {
-            response.sendRedirect("student_register.jsp?error=Enrollment ID or Email address is already registered!");
+        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            response.sendRedirect("student_register.jsp?error=Please enter a valid email address.");
+            return;
+        }
+
+        if (!enrollmentId.matches("^0161[A-Za-z0-9]{8}$")) {
+            response.sendRedirect("student_register.jsp?error=Enrollment ID is invalid according to the VNS Group. Please check it.");
+            return;
+        }
+
+        int semesterId = 1;
+        try {
+            semesterId = Integer.parseInt(semesterIdStr);
+        } catch (NumberFormatException e) {
+            response.sendRedirect("student_register.jsp?error=Invalid semester selected.");
+            return;
+        }
+
+        if (userDAO.isStudentEnrollmentExists(enrollmentId)) {
+            response.sendRedirect("student_register.jsp?error=Enrollment ID (" + enrollmentId + ") is already registered!");
+            return;
+        }
+
+        if (userDAO.isStudentEmailExists(email)) {
+            response.sendRedirect("student_register.jsp?error=Email address (" + email + ") is already registered!");
             return;
         }
 
@@ -58,7 +81,7 @@ public class StudentRegisterServlet extends HttpServlet {
             session.setAttribute("userType", "student");
             response.sendRedirect("student_dashboard.jsp");
         } else {
-            response.sendRedirect("student_register.jsp?error=Registration Failed. Please check inputs or try again.");
+            response.sendRedirect("student_register.jsp?error=Registration Failed. Database connection failed or invalid data provided.");
         }
     }
 }

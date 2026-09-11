@@ -24,12 +24,27 @@ public class FacultyRegisterServlet extends HttpServlet {
         String employeeId = request.getParameter("employeeId") != null ? request.getParameter("employeeId").trim() : "";
         String email = request.getParameter("email") != null ? request.getParameter("email").trim() : "";
         String password = request.getParameter("password") != null ? request.getParameter("password").trim() : "";
-        String role = request.getParameter("role");
-        String department = request.getParameter("department");
+        String role = request.getParameter("role") != null ? request.getParameter("role").trim() : "";
+        String department = request.getParameter("department") != null ? request.getParameter("department").trim() : "";
         String[] semesters = request.getParameterValues("semesters"); // Multiple semesters
 
-        if (userDAO.isFacultyExists(employeeId, email)) {
-            response.sendRedirect("faculty_register.jsp?error=Employee ID or Email address is already registered!");
+        if (name.isEmpty() || employeeId.isEmpty() || email.isEmpty() || password.isEmpty() || role.isEmpty() || department.isEmpty()) {
+            response.sendRedirect("faculty_register.jsp?error=Please fill in all required fields.");
+            return;
+        }
+
+        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            response.sendRedirect("faculty_register.jsp?error=Please enter a valid email address.");
+            return;
+        }
+
+        if (userDAO.isFacultyEmployeeIdExists(employeeId)) {
+            response.sendRedirect("faculty_register.jsp?error=Employee ID (" + employeeId + ") is already registered!");
+            return;
+        }
+
+        if (userDAO.isFacultyEmailExists(email)) {
+            response.sendRedirect("faculty_register.jsp?error=Email address (" + email + ") is already registered!");
             return;
         }
 
@@ -54,7 +69,7 @@ public class FacultyRegisterServlet extends HttpServlet {
             session.setAttribute("userType", "faculty");
             response.sendRedirect("faculty_dashboard.jsp");
         } else {
-            response.sendRedirect("faculty_register.jsp?error=Registration Failed. Please check inputs or try again.");
+            response.sendRedirect("faculty_register.jsp?error=Registration Failed. Database connection failed or invalid data provided.");
         }
     }
 }

@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS semesters (
 CREATE TABLE IF NOT EXISTS subjects (
     id INT AUTO_INCREMENT PRIMARY KEY,
     subject_name VARCHAR(100) NOT NULL,
-    stream ENUM('B.Tech', 'M.Tech', 'Diploma', 'B.Pharma', 'M.Pharma', 'Nursing', 'MBA') NOT NULL
+    stream VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS students (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS students (
     enrollment_id VARCHAR(20) UNIQUE NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    stream ENUM('B.Tech', 'M.Tech', 'Diploma', 'B.Pharma', 'M.Pharma', 'Nursing', 'MBA') NOT NULL,
+    stream VARCHAR(100) NOT NULL,
     semester_id INT,
     FOREIGN KEY (semester_id) REFERENCES semesters(id) ON DELETE SET NULL
 );
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS faculty (
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('Professor', 'HOD', 'Vice Principal', 'Principal') NOT NULL,
-    department ENUM('B.Tech', 'M.Tech', 'Diploma', 'B.Pharma', 'M.Pharma', 'Nursing', 'MBA') NOT NULL
+    department VARCHAR(100) NOT NULL
 );
 
 
@@ -50,6 +50,16 @@ CREATE TABLE IF NOT EXISTS faculty_semester (
     FOREIGN KEY (faculty_id) REFERENCES faculty(id) ON DELETE CASCADE,
     FOREIGN KEY (semester_id) REFERENCES semesters(id) ON DELETE CASCADE,
     PRIMARY KEY(faculty_id, semester_id)
+);
+
+CREATE TABLE IF NOT EXISTS user_biometrics (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(50) NOT NULL,
+    user_type ENUM('student', 'faculty') NOT NULL,
+    credential_id VARCHAR(500) NOT NULL,
+    public_key TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_user_bio (user_id, user_type)
 );
 
 CREATE TABLE IF NOT EXISTS attendance (

@@ -52,7 +52,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Enrollment ID<sup>*</sup></label>
-                                <input type="text" name="enrollmentId" class="form-control" required placeholder="EN2024001">
+                                <input type="text" name="enrollmentId" class="form-control" required placeholder="0161CS211001" maxlength="12" pattern="0161[A-Za-z0-9]{8}" oninvalid="this.setCustomValidity('The enrollment ID is invalid according to the VNS Group. Please check it.')" oninput="this.setCustomValidity('')">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email Address<sup>*</sup></label>
@@ -72,9 +72,11 @@
                                         <option value="" disabled selected>Select Stream...</option>
                                         <option value="B.Tech">B.Tech</option>
                                         <option value="M.Tech">M.Tech</option>
-                                        <option value="Diploma">Diploma</option>
+                                        <option value="Diploma (Engg)">Diploma (Engg)</option>
                                         <option value="B.Pharma">B.Pharma</option>
                                         <option value="M.Pharma">M.Pharma</option>
+                                        <option value="D.Pharma">D.Pharma</option>
+                                        <option value="Physical Education">Physical Education</option>
                                         <option value="Nursing">Nursing</option>
                                         <option value="MBA">MBA</option>
                                     </select>

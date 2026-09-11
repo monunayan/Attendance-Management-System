@@ -16,15 +16,38 @@ public class UserDAO {
 
     // Check if Student enrollment_id or email already exists
     public boolean isStudentExists(String enrollmentId, String email) {
-        String sql = "SELECT id FROM students WHERE enrollment_id = ? OR LOWER(email) = LOWER(?)";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, enrollmentId.trim());
-            ps.setString(2, email.trim());
-            try (ResultSet rs = ps.executeQuery()) {
-                return rs.next();
+        return isStudentEnrollmentExists(enrollmentId) || isStudentEmailExists(email);
+    }
+
+    public boolean isStudentEnrollmentExists(String enrollmentId) {
+        if (enrollmentId == null || enrollmentId.trim().isEmpty()) return false;
+        String sql = "SELECT id FROM students WHERE enrollment_id = ?";
+        try (Connection conn = DBConnection.getConnection()) {
+            if (conn == null) return false;
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, enrollmentId.trim());
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean isStudentEmailExists(String email) {
+        if (email == null || email.trim().isEmpty()) return false;
+        String sql = "SELECT id FROM students WHERE LOWER(email) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection()) {
+            if (conn == null) return false;
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, email.trim());
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -32,44 +55,78 @@ public class UserDAO {
 
     // Check if Faculty employee_id or email already exists
     public boolean isFacultyExists(String employeeId, String email) {
-        String sql = "SELECT id FROM faculty WHERE employee_id = ? OR LOWER(email) = LOWER(?)";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, employeeId.trim());
-            ps.setString(2, email.trim());
-            try (ResultSet rs = ps.executeQuery()) {
-                return rs.next();
+        return isFacultyEmployeeIdExists(employeeId) || isFacultyEmailExists(email);
+    }
+
+    public boolean isFacultyEmployeeIdExists(String employeeId) {
+        if (employeeId == null || employeeId.trim().isEmpty()) return false;
+        String sql = "SELECT id FROM faculty WHERE employee_id = ?";
+        try (Connection conn = DBConnection.getConnection()) {
+            if (conn == null) return false;
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, employeeId.trim());
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean isFacultyEmailExists(String email) {
+        if (email == null || email.trim().isEmpty()) return false;
+        String sql = "SELECT id FROM faculty WHERE LOWER(email) = LOWER(?)";
+        try (Connection conn = DBConnection.getConnection()) {
+            if (conn == null) return false;
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, email.trim());
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
 
     public boolean registerStudent(Student student) {
+        if (student == null) return false;
         String sql = "INSERT INTO students (name, enrollment_id, email, password, stream, semester_id) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, student.getName());
-            ps.setString(2, student.getEnrollmentId());
-            ps.setString(3, student.getEmail());
-            ps.setString(4, student.getPassword());
-            ps.setString(5, student.getStream());
-            ps.setInt(6, student.getSemesterId());
-            
-            int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0;
-        } catch (SQLException e) {
+        try (Connection conn = DBConnection.getConnection()) {
+            if (conn == null) {
+                System.err.println("DB Connection failed in registerStudent");
+                return false;
+            }
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, student.getName());
+                ps.setString(2, student.getEnrollmentId());
+                ps.setString(3, student.getEmail());
+                ps.setString(4, student.getPassword());
+                ps.setString(5, student.getStream());
+                ps.setInt(6, student.getSemesterId());
+                
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected > 0;
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
 
     public boolean registerFaculty(Faculty faculty, String[] semesterIds) {
+        if (faculty == null) return false;
         String sql = "INSERT INTO faculty (name, employee_id, email, password, role, department) VALUES (?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         try {
             conn = DBConnection.getConnection();
+            if (conn == null) {
+                System.err.println("DB Connection failed in registerFaculty");
+                return false;
+            }
             conn.setAutoCommit(false); // Start transaction
 
             try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -110,7 +167,7 @@ public class UserDAO {
                 conn.rollback();
                 ex.printStackTrace();
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (conn != null) {

@@ -83,5 +83,14 @@
         <url-pattern>/ForgotPasswordServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>BiometricServlet</servlet-name>
+        <servlet-class>com.cams.servlet.BiometricServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BiometricServlet</servlet-name>
+        <url-pattern>/BiometricServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
 
